@@ -4,7 +4,9 @@ export default StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10
+        padding: 10,
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 1
     },
     logo: {
         width: 120,

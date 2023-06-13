@@ -6,6 +6,8 @@ import { SafeAreaView, KeyboardAvoidingView } from "react-native";
 import Header from './header/Header';
 import Footer from "./footer/Footer";
 
+import styles from '../assets/styles/layout.style';
+
 interface ILayoutProps {
     children: ReactElement;
 }
@@ -15,7 +17,7 @@ function Layout(props:ILayoutProps):JSX.Element {
     const { children } = props;
 
     return (
-        <SafeAreaView style={{flex: 1, justifyContent: 'space-between'}}>
+        <SafeAreaView style={styles.container}>
             <Header />
             <KeyboardAvoidingView>
                 {children}

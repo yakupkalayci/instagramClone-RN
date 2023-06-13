@@ -6,7 +6,11 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         padding: 15,
         alignItems: 'center',
-        paddingBottom: 0
+        position: 'absolute',
+        bottom: 0,
+        paddingBottom: 30,
+        width: '100%',
+        backgroundColor: 'white'
     },
     imageIcon: {
         width: 30,

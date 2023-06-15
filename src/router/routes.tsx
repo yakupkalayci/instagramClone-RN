@@ -1,7 +1,14 @@
+// Import Screens
 import DirectMessages from "../screens/DirectMessages";
 import Home from "../screens/Home"
-import * as RootNavigation from '../router/RootNavigation';
 import Notifications from "../screens/Notifications";
+import Explore from "../screens/Explore";
+
+// Import Navigation
+import * as RootNavigation from '../router/RootNavigation';
+
+// Import Components
+import SearchInput from "../components/search-input/SearchInput";
 
 export type TRightButton = {
     name: string;
@@ -16,7 +23,7 @@ export type THeaderOptions = {
     rightButtons?: TRightButton[];
     canGoBack: boolean;
     leftLabel?: string;
-    FullContent?: JSX.Element;
+    fullContent?: JSX.Element;
 };
 
 export type Troute = {
@@ -89,6 +96,18 @@ export const routes:Troute[] = [
             canGoBack: true,
             leftLabel: 'Notifications',
             hasRightButtons: false
+        }
+    },
+    {
+        id: 3,
+        name: 'explore',
+        navigateKey: 'explore',
+        Component: Explore,
+        headerOptions: {
+            showLogo: false,
+            canGoBack: false,
+            hasRightButtons: false,
+            fullContent: SearchInput()
         }
     }
 ]

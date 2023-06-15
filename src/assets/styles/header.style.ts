@@ -6,7 +6,12 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10,
         borderBottomColor: 'lightgray',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+    },
+    fullContentContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
     },
     logo: {
         width: 120,

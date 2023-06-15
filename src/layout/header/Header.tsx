@@ -28,6 +28,14 @@ function Header(props: IHeaderProps): JSX.Element {
     // variables
     const navigation = useNavigation();
 
+    if(options.fullContent) {
+        return (
+            <View style={styles.fullContentContainer}>
+                {options.fullContent}
+            </View>
+        )
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.leftPart}>

@@ -14,7 +14,9 @@ export default StyleSheet.create({
         resizeMode: 'contain'
     },
     leftPart: {
-        width: '60%'
+        width: '60%',
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     rightPart: {
         flexDirection: 'row',
@@ -25,5 +27,10 @@ export default StyleSheet.create({
     icon: {
         width: 25,
         height: 25
+    },
+    label: {
+        marginLeft: 10,
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 });

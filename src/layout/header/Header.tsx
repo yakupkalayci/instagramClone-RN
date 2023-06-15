@@ -1,26 +1,57 @@
 // Import React
-import { View, Pressable, Image } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
+
+// Import Navigation
+import { useNavigation } from "@react-navigation/native";
 
 // Import Icons
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+// Import Components
+import HeaderButton from "../../components/header-button/HeaderButton";
+
+// Import Types
+import { THeaderOptions } from "../../router/routes";
+
 // Import Styles
 import styles from '../../assets/styles/header.style';
 
-function Header():JSX.Element {
+interface IHeaderProps {
+    options: THeaderOptions
+}
+
+function Header(props: IHeaderProps): JSX.Element {
+
+    // destruct props
+    const { options } = props;
+
+    // variables
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={styles.leftPart}>
-                <Image source={require('../../assets/icons/logo.png')} style={styles.logo} />
+                {options.showLogo && <Image source={require('../../assets/icons/logo.png')} style={styles.logo} />}
+                {options.canGoBack && (
+                    <>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Icon name="keyboard-backspace" size={35}/>
+                    </TouchableOpacity>
+                        <Text style={styles.label}>{options.leftLabel}</Text>
+                    </>
+                )}
             </View>
-            <View style={styles.rightPart}>
-                <Pressable>
-                    <Icon name="cards-heart-outline" size={25} />
-                </Pressable>
-                <Pressable>
-                    <Image source={require('../../assets/icons/send.png')} style={styles.icon} />
-                </Pressable>
-            </View>
+            {
+                options.hasRightButtons && (
+                    <View style={styles.rightPart}>
+                        {
+                            options.rightButtons?.map((item, index) => (
+                                <HeaderButton key={index} isIcon={item.isIcon} isImage={item.isImage} name={item.name} action={item.action} />
+                            ))
+                        }
+                    </View>
+                )
+            }
         </View>
     )
 }

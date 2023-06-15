@@ -11,7 +11,7 @@ function Story(): JSX.Element {
         <FlatList
             data={fakeStories}
             renderItem={({ index }) => (
-                <View style={styles.container}>
+                <View style={styles.storyContainer}>
                     {
                         index === 0 ? (
                             <View>
@@ -29,6 +29,7 @@ function Story(): JSX.Element {
             )}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
+            style={styles.container}
         />
     )
 }

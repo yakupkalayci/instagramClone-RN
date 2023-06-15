@@ -1,6 +1,9 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 export default StyleSheet.create({
+    container: {
+        width: Dimensions.get('window').width,
+    },
     header: {
         flexDirection: 'row',
         alignItems: 'center',

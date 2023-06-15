@@ -11,7 +11,7 @@ import styles from '../../assets/styles/post.style';
 
 function Post(): JSX.Element {
     return (
-        <View>
+        <View style={styles.container}>
             <PostHeader />
             <Image
                 source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Kapadokya-G%C3%96RSELLER-2.jpg/640px-Kapadokya-G%C3%96RSELLER-2.jpg' }}

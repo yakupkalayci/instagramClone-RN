@@ -3,15 +3,14 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 5,
+        borderRadius: 10,
         paddingHorizontal: 10,
-        paddingVertical: 5,
+        paddingVertical: 7,
         width: '90%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        backgroundColor: 'lightgray'
     },
     input: {
-        width: '95%'
+        width: '95%',
     }
 });

@@ -24,7 +24,6 @@ export default StyleSheet.create({
     },
     messageDetails: {
         paddingLeft: 10,
-        // flexDirection: 'column'
     },
     notificationDetails: {
         paddingLeft: 10,
@@ -44,6 +43,14 @@ export default StyleSheet.create({
         height: 55
     },
     message: {
-        maxWidth: '61%'
+        maxWidth: '61%',
+    },
+    button: {
+        backgroundColor: 'lightgray',
+        padding: 7,
+        borderRadius: 5,
+    },
+    bold: {
+        fontWeight: 'bold'
     }
 })

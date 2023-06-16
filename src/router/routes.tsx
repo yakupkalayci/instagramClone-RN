@@ -3,7 +3,8 @@ import Home from "../screens/Home"
 import DirectMessages from "../screens/DirectMessages";
 import Notifications from "../screens/Notifications";
 import Explore from "../screens/Explore";
-import Profile from "../screens/Profile";
+import Profile from "../screens/profile/Profile";
+import Follow from "../screens/profile/Follow";
 
 // Import Navigation
 import * as RootNavigation from '../router/RootNavigation';
@@ -135,6 +136,18 @@ export const routes:Troute[] = [
                     action: () => {}
                 }
             ]
+        }
+    },
+    {
+        id: 5,
+        name: 'follow',
+        navigateKey: 'follow',
+        Component: Follow,
+        headerOptions: {
+            showLogo: false,
+            canGoBack: true,
+            leftLabel: 'username',
+            hasRightButtons: false,
         }
     }
 ]

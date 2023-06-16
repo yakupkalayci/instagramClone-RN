@@ -9,15 +9,12 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-na
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Import Components
-import RowImage from "../components/row-image/RowImage";
+import RowImage from "../../components/row-image/RowImage";
 
 // Import Styles
-import styles from '../assets/styles/profile.style';
+import styles from '../../assets/styles/profile.style';
 
-function Profile(): JSX.Element {
-    // Screen Width variable
-    const SCREEN_WIDTH = Dimensions.get('window').width;
-
+function Profile({navigation}): JSX.Element {
     // fake data
     const fakeHighlightedStories: string[] = [];
     const fakePosts = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -36,6 +33,7 @@ function Profile(): JSX.Element {
     // States
     const [activeSection, setActiveSection] = useState<'left' | 'right'>('left');
 
+    // method for handling animation
     const handleToogleLineAnimation = (direction: 'left' | 'right') => {
         setActiveSection(direction);
         switch (direction) {
@@ -54,18 +52,18 @@ function Profile(): JSX.Element {
                 <View style={styles.upperInfos}>
                     <Icon name="account-circle-outline" size={70} />
                     <View style={styles.profileStats}>
-                        <View style={styles.statContainer}>
+                        <TouchableOpacity style={styles.statContainer}>
                             <Text style={styles.bold}>3</Text>
                             <Text>Gönderi</Text>
-                        </View>
-                        <View style={styles.statContainer}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('follow', {type:'followers'})} style={styles.statContainer}>
                             <Text style={styles.bold}>94</Text>
                             <Text>Takipçi</Text>
-                        </View>
-                        <View style={styles.statContainer}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('follow', {type: 'following'})} style={styles.statContainer}>
                             <Text style={styles.bold}>184</Text>
                             <Text>Takip</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 <View style={styles.username}>

@@ -5,14 +5,6 @@ export default StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 130
     },
-    row: {
-        flexDirection: 'row'
-    },
-    postImage: {
-        width: 120,
-        height: 140,
-        margin: 5
-    },
     categoryContainer: {
         margin: 10
     },

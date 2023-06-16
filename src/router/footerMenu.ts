@@ -22,7 +22,7 @@ export const footerMenu: TFooterMenu[] = [
         id: 2,
         title: 'Add',
         navigateKey: 'add',
-        iconName: 'plus-box',
+        iconName: 'plus-box-outline',
     },
     {
         id: 3,

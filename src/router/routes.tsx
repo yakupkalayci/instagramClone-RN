@@ -1,8 +1,9 @@
 // Import Screens
-import DirectMessages from "../screens/DirectMessages";
 import Home from "../screens/Home"
+import DirectMessages from "../screens/DirectMessages";
 import Notifications from "../screens/Notifications";
 import Explore from "../screens/Explore";
+import Profile from "../screens/Profile";
 
 // Import Navigation
 import * as RootNavigation from '../router/RootNavigation';
@@ -108,6 +109,32 @@ export const routes:Troute[] = [
             canGoBack: false,
             hasRightButtons: false,
             fullContent: SearchInput()
+        }
+    },
+    {
+        id: 4,
+        name: 'profile',
+        navigateKey: 'profile',
+        Component: Profile,
+        headerOptions: {
+            showLogo: false,
+            canGoBack: false,
+            leftLabel: 'username',
+            hasRightButtons: true,
+            rightButtons: [
+                {
+                    isIcon: true,
+                    isImage: false,
+                    name: 'plus-box-outline',
+                    action: () => {}
+                },
+                {
+                    isIcon: true,
+                    isImage: false,
+                    name: 'menu',
+                    action: () => {}
+                }
+            ]
         }
     }
 ]

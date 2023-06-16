@@ -41,13 +41,11 @@ function Header(props: IHeaderProps): JSX.Element {
             <View style={styles.leftPart}>
                 {options.showLogo && <Image source={require('../../assets/icons/logo.png')} style={styles.logo} />}
                 {options.canGoBack && (
-                    <>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Icon name="keyboard-backspace" size={35}/>
-                    </TouchableOpacity>
-                        <Text style={styles.label}>{options.leftLabel}</Text>
-                    </>
+                    </TouchableOpacity> 
                 )}
+                {options.leftLabel && <Text style={styles.label}>{options.leftLabel}</Text>}
             </View>
             {
                 options.hasRightButtons && (

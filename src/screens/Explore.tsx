@@ -1,6 +1,9 @@
 // Import React
 import { Text, View, Image, FlatList, Pressable } from "react-native";
 
+// Import Components
+import RowImage from "../components/row-image/RowImage";
+
 // Import Styles
 import styles from '../assets/styles/explore.style';
 
@@ -28,11 +31,7 @@ function Explore(): JSX.Element {
             <FlatList
                 data={fakePosts}
                 numColumns={3}
-                renderItem={() => (
-                    <View style={styles.row}>
-                        <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Kapadokya-G%C3%96RSELLER-2.jpg/640px-Kapadokya-G%C3%96RSELLER-2.jpg' }} style={styles.postImage} />
-                    </View>
-                )}
+                renderItem={() => <RowImage imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Kapadokya-G%C3%96RSELLER-2.jpg/640px-Kapadokya-G%C3%96RSELLER-2.jpg" />}
             />
         </View>
     )

@@ -5,6 +5,8 @@ import Notifications from "../screens/Notifications";
 import Explore from "../screens/Explore";
 import Profile from "../screens/profile/Profile";
 import Follow from "../screens/profile/Follow";
+import Login from "../screens/auth/Login";
+import Signup from "../screens/auth/Signup";
 
 // Import Navigation
 import * as RootNavigation from '../router/RootNavigation';
@@ -33,7 +35,9 @@ export type Troute = {
     name: string;
     navigateKey: string;
     Component: (props:any) => JSX.Element;
-    headerOptions: THeaderOptions;
+    hasHeader: boolean;
+    hasFooter: boolean;
+    headerOptions?: THeaderOptions;
 };
 
 export const routes:Troute[] = [
@@ -42,6 +46,8 @@ export const routes:Troute[] = [
         name: 'home',
         navigateKey: 'home',
         Component: Home,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: true,
             hasRightButtons: true,
@@ -67,6 +73,8 @@ export const routes:Troute[] = [
         name: 'dm',
         navigateKey: 'dm',
         Component: DirectMessages,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: false,
             canGoBack: true,
@@ -93,6 +101,8 @@ export const routes:Troute[] = [
         name: 'notifications',
         navigateKey: 'notifications',
         Component: Notifications,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: false,
             canGoBack: true,
@@ -105,6 +115,8 @@ export const routes:Troute[] = [
         name: 'explore',
         navigateKey: 'explore',
         Component: Explore,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: false,
             canGoBack: false,
@@ -117,6 +129,8 @@ export const routes:Troute[] = [
         name: 'profile',
         navigateKey: 'profile',
         Component: Profile,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: false,
             canGoBack: false,
@@ -143,11 +157,29 @@ export const routes:Troute[] = [
         name: 'follow',
         navigateKey: 'follow',
         Component: Follow,
+        hasHeader: true,
+        hasFooter: true,
         headerOptions: {
             showLogo: false,
             canGoBack: true,
             leftLabel: 'username',
             hasRightButtons: false,
         }
+    },
+    {
+        id: 6,
+        name: 'login',
+        navigateKey: 'login',
+        Component: Login,
+        hasHeader: false,
+        hasFooter: false,
+    },
+    {
+        id: 7,
+        name: 'signup',
+        navigateKey: 'signup',
+        Component: Signup,
+        hasHeader: false,
+        hasFooter: false,
     }
 ]

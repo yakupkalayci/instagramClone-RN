@@ -17,7 +17,7 @@ import { THeaderOptions } from "../../router/routes";
 import styles from '../../assets/styles/header.style';
 
 interface IHeaderProps {
-    options: THeaderOptions
+    options?: THeaderOptions
 }
 
 function Header(props: IHeaderProps): JSX.Element {
@@ -28,7 +28,7 @@ function Header(props: IHeaderProps): JSX.Element {
     // variables
     const navigation = useNavigation();
 
-    if(options.fullContent) {
+    if(options?.fullContent) {
         return (
             <View style={styles.fullContentContainer}>
                 {options.fullContent}
@@ -39,16 +39,16 @@ function Header(props: IHeaderProps): JSX.Element {
     return (
         <View style={styles.container}>
             <View style={styles.leftPart}>
-                {options.showLogo && <Image source={require('../../assets/icons/logo.png')} style={styles.logo} />}
-                {options.canGoBack && (
+                {options?.showLogo && <Image source={require('../../assets/icons/logo.png')} style={styles.logo} />}
+                {options?.canGoBack && (
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Icon name="keyboard-backspace" size={35}/>
                     </TouchableOpacity> 
                 )}
-                {options.leftLabel && <Text style={styles.label}>{options.leftLabel}</Text>}
+                {options?.leftLabel && <Text style={styles.label}>{options.leftLabel}</Text>}
             </View>
             {
-                options.hasRightButtons && (
+                options?.hasRightButtons && (
                     <View style={styles.rightPart}>
                         {
                             options.rightButtons?.map((item, index) => (

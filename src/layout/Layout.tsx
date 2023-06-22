@@ -19,21 +19,23 @@ import styles from '../assets/styles/layout.style';
 
 interface ILayoutProps {
     children: ReactElement;
-    headerOptions: THeaderOptions
+    hasHeader: boolean;
+    hasFooter: boolean;
+    headerOptions?: THeaderOptions
 }
 
-function Layout(props:ILayoutProps):JSX.Element {
+function Layout(props: ILayoutProps): JSX.Element {
     // destruct props
-    const { children, headerOptions } = props;
+    const { children, hasHeader, hasFooter, headerOptions } = props;
     const insets = useSafeAreaInsets();
 
     return (
-        <GestureHandlerRootView style={[styles.container, {paddingTop: insets.top}]}>
-            <Header options={headerOptions} />
+        <GestureHandlerRootView style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+            {hasHeader && <Header options={headerOptions} />}
             <KeyboardAvoidingView>
                 {children}
             </KeyboardAvoidingView>
-            <Footer />
+            {hasFooter && <Footer />}
         </GestureHandlerRootView>
     )
 }

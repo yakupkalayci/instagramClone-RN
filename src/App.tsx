@@ -18,19 +18,19 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {
-            routes?.map(({ id, name, Component, headerOptions }) => (
-              <Stack.Screen key={id} name={name}>
-                {props => (
-                  <Layout headerOptions={headerOptions}>
-                    <Component {...props} />
-                  </Layout>
-                )}
-              </Stack.Screen>
-            ))
-          }
-        </Stack.Navigator>
+      <Stack.Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
+        {
+          routes?.map(({ id, name, Component, hasHeader, hasFooter, headerOptions }) => (
+            <Stack.Screen key={id} name={name}>
+              {props => (
+                <Layout hasHeader={hasHeader} hasFooter={hasFooter} headerOptions={headerOptions}>
+                  <Component {...props} />
+                </Layout>
+              )}
+            </Stack.Screen>
+          ))
+        }
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

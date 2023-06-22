@@ -1,5 +1,9 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
+use_frameworks! :linkage => :static
+$RNFirebaseAsStaticFramework = true
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+use_modular_headers!
+
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
@@ -38,7 +42,7 @@ target 'instagramClone' do
     #
     # Note that if you have use_frameworks! enabled, Flipper will not work and
     # you should disable the next line.
-    :flipper_configuration => flipper_config,
+    # :flipper_configuration => flipper_config,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
@@ -56,5 +60,38 @@ target 'instagramClone' do
       :mac_catalyst_enabled => false
     )
     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
+# Uncomment this line if you're not using auto-linking
+# pod 'WatermelonDB', path: '../node_modules/@nozbe/watermelondb'
+
+# WatermelonDB dependency, should not be needed on modern React Native
+# (please file an issue if this causes issues for you)
+# pod 'React-jsi', path: '../node_modules/react-native/ReactCommon/jsi', modular_headers: true
+
+# WatermelonDB dependency
+pod 'simdjson', path: '../node_modules/@nozbe/simdjson', modular_headers: true
+# Add the Firebase pod for Google Analytics
+pod 'FirebaseAnalytics'
+
+# For Analytics without IDFA collection capability, use this pod instead
+# pod ‘Firebase/AnalyticsWithoutAdIdSupport’
+
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+$static_framework = [ 
+    'WatermelonDB',
+      'simdjson',
+  ]
+  pre_install do |installer|
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+      installer.pod_targets.each do |pod|
+        if $static_framework.include?(pod.name)
+          def pod.build_type;
+          Pod::BuildType.static_library # >= 1.9
+        end
+      end
+    end
   end
 end

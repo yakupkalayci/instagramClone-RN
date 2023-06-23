@@ -1,5 +1,5 @@
 // Import React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, Pressable, Image, Alert } from "react-native";
 
 // Import Firebase Auth
@@ -29,10 +29,12 @@ function Login({ navigation }): JSX.Element {
 
     // methods
     const handleLogin = () => {
-        if(email && password) {
+        if (email && password) {
             auth().signInWithEmailAndPassword(email, password)
-            .then(() => navigation.navigate('home'))
-            .catch((err) => Alert.alert(authErrorParser(err.message)));
+                .then(() => {
+                    navigation.navigate('home');
+                })
+                .catch((err) => Alert.alert(authErrorParser(err.message)));
         }
         else {
             Alert.alert('E-posta adresi ve şifre boş bırakılamaz.')
@@ -48,36 +50,36 @@ function Login({ navigation }): JSX.Element {
                     </Pressable>
                     <Icon name="instagram" size={70} color='red' />
                     <View style={styles.formContainer}>
-                        <Input 
+                        <Input
                             value={email}
                             onChange={(text) => setEmail(text)}
                             keyboardType='email-address'
                             placeholder="E-posta adresi"
                             styles={styles.input}
                         />
-                        <Input 
+                        <Input
                             value={password}
                             onChange={(text) => setPassword(text)}
                             secureTextEntry={true}
                             placeholder='Şifre'
                             styles={styles.input}
                         />
-                        <Button 
+                        <Button
                             type="TouchableOpacity"
                             title="Giriş yap"
                             onPress={() => handleLogin()}
                             buttonStyle={styles.loginButton}
                             titleStyle={styles.buttonText}
                         />
-                        <Button 
+                        <Button
                             title="Şifreni mi unuttun?"
                             type="Pressable"
-                            onPress={() => {}}
+                            onPress={() => { }}
                             titleStyle={styles.text}
                         />
                     </View>
                     <View style={styles.footer}>
-                        <Button 
+                        <Button
                             type="TouchableOpacity"
                             title="Yeni hesap oluştur"
                             buttonStyle={styles.signupButton}

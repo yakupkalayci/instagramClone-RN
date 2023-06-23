@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Dimensions, FlatList, Image } from "react-native";
 
+// Import Firebase Auth
+import auth from '@react-native-firebase/auth';
+
 // Import ReAnimated
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
 
@@ -71,7 +74,10 @@ function Profile({navigation}): JSX.Element {
                     <Text>Hakkımda</Text>
                 </View>
                 <View style={styles.actionButtons}>
-                    <TouchableOpacity style={styles.actionButton}>
+                    <TouchableOpacity onPress={() => {
+                        auth().signOut();
+                        navigation.navigate('login')
+                    }} style={styles.actionButton}>
                         <Text>Profili Düzenle</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionButton}>
